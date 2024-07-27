@@ -2,7 +2,9 @@
 
 Aapanel docker compose file to customize
 
-Update: Ubuntu 24.04
+Update: Ubuntu 20.04
+
+The 20.04 is compatible with mail server and another features.
 
 ## config
 

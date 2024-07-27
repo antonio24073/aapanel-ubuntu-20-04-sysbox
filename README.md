@@ -6,13 +6,13 @@ Update: Ubuntu 20.04
 
 The 20.04 is compatible with mail server and another features.
 
-# requirements
+# Requirements
 
 - install docker sysbox: https://github.com/nestybox/sysbox
 
 ## config
 
-Rename `.env.example` to `.env` and chage the variables
+Rename `.env.example` to `.env` and change the variables
 
 ## run
 

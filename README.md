@@ -4,11 +4,13 @@ Aapanel docker compose file to customize
 
 Update: Ubuntu 20.04
 
-The 20.04 is compatible with mail server and another features.
+use 20.04 intead 22.04 and 24.04 because (in this date) it is compatible with mail server, openlitespeed.
 
 # Requirements
 
 - install docker sysbox: https://github.com/nestybox/sysbox
+
+Sysbox is needed to nested docker containers.
 
 ## config
 

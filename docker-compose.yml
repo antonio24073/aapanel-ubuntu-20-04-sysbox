@@ -2,11 +2,8 @@ services:
   aap:
     runtime: sysbox-runc
     user: root
-    # build: ./docker-file
-    # image: antonio24073/aapanel:ubuntu-24-04-sysbox
     image: antonio24073/aapanel:ubuntu-20-04-sysbox
     container_name: aapanel
-    # hostname: aapanel.local
     ports: 
       - ${AAP_PORT}:7800
       - ${FTP_PORT}:21
@@ -29,10 +26,7 @@ services:
       - ./docker-file/provision/wp-cli.phar:/usr/bin/wp
     env_file:
       - ./.env
-    entrypoint: sh /provision/entrypoint/dev.sh
-    # entrypoint: sh /provision/entrypoint/prod.sh
-    # command: sh /provision/entrypoint/dev.sh
-    # entrypoint: [ "sh", "/provision/entrypoint/dev.sh", "&", "/sbin/init", "--log-level=err" , "&", "sudo dockerd"]
+    command: sh /provision/entrypoint/cmd.sh
     sysctls:
       net.ipv6.conf.all.disable_ipv6: 1
     ulimits:

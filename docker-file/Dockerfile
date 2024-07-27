@@ -37,11 +37,15 @@ RUN apt-get install -y htop
 
 COPY ./provision /provision
 RUN ["chmod", "+x", "-R", "/provision/entrypoint"]
+
 COPY ./provision/wp-cli.phar /usr/bin/wp
 RUN ["chmod", "+x", "-R", "/provision/wp-cli.phar"]
 RUN ["chmod", "+x", "-R", "/usr/bin/wp"]
 
-CMD ["/bin/sh", "/provision/entrypoint/prod.sh"]
-ENTRYPOINT [ "/sbin/init", "--log-level=err" ]
+COPY ./provision/docker-compose /bin/docker-compose
+RUN ["chmod", "+x", "/provision/docker-compose"]
+RUN ["chmod", "+x", "/bin/docker-compose"]
+
+ENTRYPOINT ["/bin/sh", "/provision/entrypoint/entrypoint.sh"]
 
 EXPOSE 7800 21 22 443 80 888

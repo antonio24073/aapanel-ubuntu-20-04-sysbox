@@ -28,13 +28,5 @@ fi
 [[ ! -z "$REDIS_PASS" ]] && sudo sed -z -i "s/# requirepass foobared/requirepass $REDIS_PASS\n/g" /www/server/redis/redis.conf
 
 sh /provision/entrypoint/restart.sh
-bt 14
-tail -f /dev/null
 
-# ini it's a healthcheck, not the best approach but it's better then original approach with tail
-sleep 10;
-while [ true ]
-do
-    curl -m 60 --retry 8 --retry-max-time 480 -skI -XGET http://127.0.0.1:$AAP_PORT | awk NR==1 | grep -q 404; if [ $? -gt 0 ]; then exit 1; else sleep 60; fi
-done
-# end it's a healthcheck, not the best approach but it's better then original approach with tail
+exec /sbin/init --log-level=err
